@@ -8,53 +8,54 @@ function pr(p){
     for (const element of p) {
         console.log(element.name);
         console.log(prodEl);
-        eval(<hvalidate class="cardvalidate_raca">${element.name
-        }</hvalidate>);
+        c.push(element.name);
+        c.push("\n");
     }
+    return c;
 
 }
 function renderorders() {
-	let orders = JSON.parse(localStorage.getItem("ORDERS")) || [];
-	
-	//alert(cartProducts); //cartProducts tem os produtos
-    
 
-	orders.forEach((p) => {
-        let i=0;
-        console.log(i);
-		ordersEl.innerHTML += `
-        <sectionvalidate>
-			<figure class="cardvalidate">
-				
-
-				
-        
-        <div class="cardvalidate_hero">
-        <img class="cardvalidate_img" src="https://i.pinimg.com/originals/8b/6d/b2/8b6db2ff062a4f614b04d0129bf92771.png" />
-    </div>
-    <div class="cardvalidate_content">
-        <div class="cardvalidate_info">
-            <hvalidateanimal class="cardvalidate_raca"><b>Produto</b> </hvalidateanimal>
-            <hvalidate class="cardvalidate_raca">${pr(p)
-            }</hvalidate>
+    let orders = JSON.parse(localStorage.getItem("ORDERS")) || [];
+    for (var i=0;i<orders.length;i++){
+        var o = orders[i];
+        var preco=0;
+        var teste  = `<sectionvalidate>
+        <figure class="cardvalidate">
             
-            <hvalidate class="cardvalidate_raca"><b>Preço final:</b>${p[i].price}</hvalidate>
+
+            
+    
+    <div class="cardvalidate_hero">
+    <img class="cardvalidate_img" src="https://i.pinimg.com/originals/8b/6d/b2/8b6db2ff062a4f614b04d0129bf92771.png" />
+</div>
+<div class="cardvalidate_content">
+    <div class="cardvalidate_info">
+        <hvalidateanimal class="cardvalidate_raca"><b>Produto</b> </hvalidateanimal>`;
+        for (element of o){
+            preco+=element.price*element.numberOfUnits;
+            teste+= `<hvalidate class="cardvalidate_raca">${element.name
+            }</hvalidate>`;
+        }
+        teste+=`<hvalidate class="cardvalidate_raca"><b>Preço final:</b>${new Intl.NumberFormat('en-IN', { maximumFractionDigits:3}).format(preco)}</hvalidate>
         </div>
     </div>
     <div class="cardvalidate_content2">
         <div class="cardvalidate_info">
-            <hvalidateperson class="cardvalidate_raca"><b>Quantidade</b> </hvalidateperson>
-            <hvalidate class="cardvalidate_raca">${p[i].numberOfUnits}</hvalidate>
+        <hvalidateperson class="cardvalidate_raca"><b>Quantidade</b> </hvalidateperson>`;
+        for (element of o){
 
+            teste+=` <hvalidate class="cardvalidate_raca">${element.numberOfUnits}</hvalidate>`;
+        }
+        
+        teste+=`</div>
         </div>
-    </div>
-    </figure>
-    </sectionvalidate>`
-    i=i+1;
-    
-    //mostrar essas encomendas, que estão na variável do local storage, na página do hmtl      
-    }); 
-    
+        </figure>
+        </sectionvalidate>`;
+
+
+        ordersEl.innerHTML+=teste;
+    }
 }
 
 renderorders(); 
