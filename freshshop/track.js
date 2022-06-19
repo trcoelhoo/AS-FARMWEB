@@ -1,7 +1,5 @@
-//adicionar as encomendas, que têm os produtos adicionados no carrinho a uma variável encomendas do local Storage
-
-const ordersEl = document.querySelector(".orders"); //select div class rounded p-2 bg-light
-const prodEl = document.querySelector(".teste");
+const ordersEl = document.querySelector(".trackte"); //select div class rounded p-2 bg-light
+const prodEl = document.querySelector(".testetrack");
 
 function pr(p){
     let c=[];
@@ -17,9 +15,11 @@ function pr(p){
 function renderorders() {
 
     let orders = JSON.parse(localStorage.getItem("ORDERS")) || [];
+    var encomenda=0;
     for (var i=0;i<orders.length;i++){
         var o = orders[i];
         var preco=0;
+        encomenda++;
         var teste  = `<sectionvalidate>
         <figure class="cardvalidate">
             
@@ -31,7 +31,7 @@ function renderorders() {
 </div>
 <div class="cardvalidate_content">
     <div class="cardvalidate_info">
-        <hvalidateanimal class="cardvalidate_raca"><b>Produto</b> </hvalidateanimal>`;
+        <hvalidateanimal class="cardvalidate_raca"><b>Encomenda ${encomenda}</b> </hvalidateanimal>`;
         for (element of o){
             preco+=element.price*element.numberOfUnits;
             teste+= `<hvalidate class="cardvalidate_raca">${element.name
@@ -42,11 +42,11 @@ function renderorders() {
     </div>
     <div class="cardvalidate_content2">
         <div class="cardvalidate_info">
-        <hvalidateperson class="cardvalidate_raca"><b>Quantidade</b> </hvalidateperson>`;
-        for (element of o){
+        <hvalidateperson class="cardvalidate_raca"><b>Estado</b> </hvalidateperson>`;
+        
 
-            teste+=` <hvalidate class="cardvalidate_raca te">${element.numberOfUnits}</hvalidate>`;
-        }
+        teste+=` <hvalidate class="cardvalidate_raca ">Encomenda Aceite (Estado Atual)</hvalidate>`;
+        
         
         teste+=`</div>
         </div>
