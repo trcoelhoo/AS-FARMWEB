@@ -27,6 +27,9 @@ function makeorder() {
 	orders2.push(cartProducts);
 	
 
+	//Limpar o carrinho, uma vez que a order foi feita com sucesso
+	const freeCart = [];
+	localStorage.setItem("CART", JSON.stringify(freeCart));
 	
 	localStorage.setItem("ORDERS", JSON.stringify(orders2));
 }
