@@ -1,0 +1,14 @@
+
+Dei login como fornecedor!
+Adicionei Produtos da database!
+Sai da conta do fornecedor!
+Dei login como cliente!
+Entrei na loja!
+Adicionei uma banana ao carrinho!
+Adicionei duas bananas ao carrinho!
+Adicionei tres bananas ao carrinho!
+Dei checkout!
+Completei o pedido!
+Cheguei a pagina do historico de encomendas!
+Cheguei a pagina de tracking de encomendas!
+Completei o teste!
